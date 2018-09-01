@@ -13,17 +13,13 @@ const playState = {
     // TODO: initialize game
     let enemyBase = new EnemyBase(game.world.width / 2, game.world.height / 2);
     enemyBase.create();
+    let incomeTower = new IncomeTower(game.world.width / 2, game.world.height / 4);
+    incomeTower.create(game.world.width / 2, game.world.height / 4);
   },
 
   // called every frame
   update: () => {
-    gameManager.incrementFrameCount();
-    if (gameManager.frameCount > 60) {
-      gameManager.incrementResources();
-      gameManager.frameCount = 0;
-    }
-    gameManager.drawHUD();
-
+    gameManager.update();
   }
 }
 
