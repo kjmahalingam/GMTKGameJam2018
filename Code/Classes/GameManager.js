@@ -31,6 +31,39 @@ class GameManager {
       }
     }
   }
+  
+  hasCollisionWithTower(obj) {
+    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
+    
+    for(gameObject of list) {
+      if (!Object.is(gameObject, obj)
+        && this.isColliding(gameObject, obj)) {
+        return gameObject;
+      }
+    }
+  }
+  
+  hasCollisionWithEnemy(obj) {
+    const list = this.gameObjects.enemy;
+    
+    for(gameObject of list) {
+      if (!Object.is(gameObject, obj)
+        && this.isColliding(gameObject, obj)) {
+        return gameObject;
+      }
+    }
+  }
+  
+  hasCollisionWithEnemyBase(obj) {
+    const list = this.gameObjects.enemyBase;
+    
+    for(gameObject of list) {
+      if (!Object.is(gameObject, obj)
+        && this.isColliding(gameObject, obj)) {
+        return gameObject;
+      }
+    }
+  }
 
   isColliding(object1, object2) {
     const xDiff = Math.abs(object1.getPos().x - object2.getPos().x);
