@@ -4,6 +4,7 @@ class GameObject {
     this.radius = radius;
     this.spriteName;
     this.sprite;
+    this.cost = 0;
   }
 
   getPos() {
@@ -16,6 +17,10 @@ class GameObject {
 
   create() {
     if (gameManager.hasCollision(this)) {
+      return;
+    }
+
+    if (!gameManager.payResources(this.cost)) {
       return;
     }
     
