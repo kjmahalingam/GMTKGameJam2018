@@ -6,6 +6,8 @@ game = new Phaser.Game(
   ''
 );
 
+gameManager = new GameManager();
+
 // Add game states
 game.state.add('boot', bootState);
 game.state.add('load', loadState);
