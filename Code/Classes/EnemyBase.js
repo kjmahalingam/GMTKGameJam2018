@@ -9,7 +9,7 @@ class EnemyBase extends GameObject {
   update(frameCount) {
     super.update();
 
-    if ((frameCount % 300) === 0) {
+    if ((frameCount % 60) === 0) {
       gameManager.addEnemy(this);
     }
   }

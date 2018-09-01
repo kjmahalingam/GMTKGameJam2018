@@ -47,6 +47,16 @@ class GameManager {
     }
   }
 
+  numTowers() {
+    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
+    return list.length;
+  }
+
+  numEnemies() {
+    const list = [...this.gameObjects.enemyBase, ...this.gameObjects.enemy];
+    return list.length;
+  }
+
   findDistance(object1, object2) {
     const xDiff = Math.abs(object1.getPos().x - object2.getPos().x);
     const yDiff = Math.abs(object1.getPos().y - object2.getPos().y);
@@ -175,6 +185,14 @@ class GameManager {
   }
 
   update() {
+    if (this.numTowers() <= 0) {
+      game.state.start('menu', true, false, 'You Lost.');
+    }
+
+    if (this.numEnemies() <= 0) {
+      game.state.start('menu', true, false, 'You Win!');
+    }
+
     for (const list of Object.entries(this.gameObjects)) {
       for (const gameObject of list[1]) {
         gameObject.update(this.frameCount);

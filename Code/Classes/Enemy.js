@@ -8,6 +8,10 @@ class Enemy extends GameObject {
   }
 
   attackTarget() {
+    if (gameManager.numTowers() <= 0) {
+      return;
+    }
+
     this.target = gameManager.findClosestTower(this);
     const dist = gameManager.findDistance(this, this.target);
     game.add.tween(this.sprite).to(
