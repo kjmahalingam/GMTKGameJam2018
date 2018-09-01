@@ -30,10 +30,31 @@ class GameManager {
     }
   }
 
-  isColliding(object1, object2) {
+  findDistance(object1, object2) {
     const xDiff = Math.abs(object1.getPos().x - object2.getPos().x);
     const yDiff = Math.abs(object1.getPos().y - object2.getPos().y);
     const dist = Math.sqrt((xDiff ** 2) + (yDiff ** 2));
+    return dist;
+  }
+
+  findClosestTower(obj) {
+    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
+    let closestTower;
+    let dist;
+
+    for (let gameObject of list) {
+      let currentDist = this.findDistance(obj, gameObject);
+      if ((closestTower == null) || (currentDist < dist)) {
+        closestTower = gameObject;
+        dist = currentDist;
+      }
+    }
+
+    return closestTower;
+  }
+
+  isColliding(object1, object2) {
+    const dist = this.findDistance(object1, object2);
     return dist < (object1.radius + object2.radius);
   }
 
@@ -81,6 +102,11 @@ class GameManager {
     }
   }
 
+  addEnemy(obj) {
+    let enemy = new Enemy(obj.pos.x, obj.pos.y);
+    enemy.create();
+  }
+
   incrementResourcesToAdd() {
     this.resourcesToAdd++;
   }
@@ -103,7 +129,8 @@ class GameManager {
     if (this.resourceText != null) {
       this.resourceText.destroy();
     }
-    this.resourceText = game.add.text(10, 10, `Resources: ${this.resources}`, this.style);
+    this.resourceText = game.add.text(100, 30, `Resources: ${this.resources}`, this.style);
+    this.resourceText.anchor.set(0.5, 0.5);
   }
 
   incrementFrameCount() {

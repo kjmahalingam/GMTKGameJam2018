@@ -4,7 +4,14 @@ class GameObject {
     this.radius = radius;
     this.spriteName;
     this.sprite;
+    this.health = 1;
+    this.healthText;
     this.cost = 0;
+    this.style = {
+      font: "30px Arial",
+      fill: "#ffffff",
+      align: "center"
+    }
   }
 
   getPos() {
@@ -17,7 +24,6 @@ class GameObject {
 
   create() {
     if (gameManager.hasCollision(this)) {
-      console.log('collide');
       return;
     }
 
@@ -31,10 +37,31 @@ class GameObject {
     gameManager.register(this);
   }
 
-  update(frameCount) {}
+  damage(incomingDamage) {
+    this.health -= incomingDamage;
+    if (this.health <= 0) {
+      this.destroy();
+    }
+  }
+
+  showHealth() {
+    if (this.healthText) {
+      this.healthText.destroy();
+    }
+    this.healthText = game.add.text(this.pos.x, this.pos.y+3, `${this.health}`, this.style);
+    this.healthText.anchor.set(0.5, 0.5);
+  }
+
+  update(frameCount) {
+    this.showHealth();
+  }
 
   destroy() {
     gameManager.deregister(this);
     this.sprite.destroy();
+    if (this.healthText) {
+      this.healthText.destroy();
+    }
+    this.destroyed = true;
   }
 }
