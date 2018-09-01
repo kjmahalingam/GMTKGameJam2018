@@ -16,6 +16,12 @@ class AttackTower extends GameObject {
       this.graphics.moveTo(this.pos.x, this.pos.y);
       this.graphics.lineStyle(2, 0x00EEFF, 1);
       this.graphics.lineTo(enemy.pos.x, enemy.pos.y);
+      game.add.tween(this.graphics).to(
+        { alpha: 0 },
+        1000,
+        Phaser.Easing.Exponential.Out,
+        true
+      );
       enemy.damage(1);
     }
   }

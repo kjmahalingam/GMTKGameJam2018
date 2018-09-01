@@ -1,19 +1,36 @@
 class GameManager {
   constructor() {
-    this.frameCount = 1;
+    this.create();
+
+    this.style = {
+      font: "30px Arial",
+      fill: "#ffffff",
+      align: "center"
+    }
+  }
+
+  create() {
     this.gameObjects = {
       incomeTower: [],
       attackTower: [],
       enemyBase: [],
       enemy: []
-    }
+    };
+    this.frameCount = 1;
     this.resources = 25;
     this.resourcesToAdd = 0;
     this.resourceText;
-    this.style = {
-      font: "30px Arial",
-      fill: "#ffffff",
-      align: "center"
+  }
+
+  destroy() {
+    for (const list of Object.entries(this.gameObjects)) {
+      for (const gameObject of list[1]) {
+        gameObject.destroy();
+      }
+    }
+
+    if (this.resourceText) {
+      this.resourceText.destroy();
     }
   }
 
