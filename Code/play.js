@@ -11,9 +11,8 @@ const playState = {
   // automatically called
   create: () => {
     // TODO: initialize game
-    let enemyBase = game.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'enemyBase');
-    enemyBase.anchor.setTo(0.5, 0.5);
-    enemyBase.width = enemyBase.height = window.innerWidth / 10;
+    let enemyBase = new EnemyBase(window.innerWidth / 2, window.innerHeight / 2);
+    enemyBase.show();
   },
 
   // called every frame
@@ -23,13 +22,11 @@ const playState = {
 }
 
 addIncomeTower = () => {
-  let incomeTower = game.add.sprite(game.input.worldX, game.input.worldY, 'incomeTower');
-  incomeTower.anchor.setTo(0.5, 0.5);
-  incomeTower.width = incomeTower.height = window.innerWidth / 20;
+  let incomeTower = new IncomeTower(game.input.worldX, game.input.worldY);
+  incomeTower.show();
 }
 
 addAttackTower = () => {
-  let attackTower = game.add.sprite(game.input.worldX, game.input.worldY, 'attackTower');
-  attackTower.anchor.setTo(0.5, 0.5);
-  attackTower.width = attackTower.height = window.innerWidth / 20;
+  let attackTower = new AttackTower(game.input.worldX, game.input.worldY);
+  attackTower.show();
 }
