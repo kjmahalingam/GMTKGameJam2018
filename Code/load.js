@@ -6,6 +6,7 @@ const loadState = {
     game.load.image('incomeTower', 'Assets/Sprites/income_tower.png');
     game.load.image('enemyBase', 'Assets/Sprites/enemy_base.png');
     game.load.image('enemy', 'Assets/Sprites/enemy.png');
+    game.load.image('laser', 'Assets/Sprites/laser.png');
 
     // TODO: load audio
 

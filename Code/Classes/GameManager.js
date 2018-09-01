@@ -53,6 +53,26 @@ class GameManager {
     return closestTower;
   }
 
+  findClosestEnemy(obj) {
+    const list = [...this.gameObjects.enemy, ...this.gameObjects.enemyBase];
+    let closestEnemy;
+    let dist;
+
+    for (let gameObject of list) {
+      let currentDist = this.findDistance(obj, gameObject);
+      if ((closestEnemy == null) || (currentDist < dist)) {
+        closestEnemy = gameObject;
+        dist = currentDist;
+      }
+    }
+
+    if (!dist || (dist > 250)) {
+      return;
+    }
+
+    return closestEnemy;
+  }
+
   isColliding(object1, object2) {
     const dist = this.findDistance(object1, object2);
     return dist < (object1.radius + object2.radius);
