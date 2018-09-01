@@ -1,8 +1,10 @@
 const loadState = {
   // automatically called
   preload: () => {
-    console.info('load preload');
     // TODO: load images
+    game.load.image('attackTower', 'Assets/Sprites/attack_tower.png');
+    game.load.image('incomeTower', 'Assets/Sprites/income_tower.png');
+    game.load.image('enemyBase', 'Assets/Sprites/enemy_base.png');
 
     // TODO: load audio
 
@@ -12,7 +14,6 @@ const loadState = {
 
   // automatically called
   create: () => {
-    console.info('load create');
     // TODO: play background music
 
     // start menu state
