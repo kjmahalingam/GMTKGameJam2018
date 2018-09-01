@@ -9,7 +9,7 @@ const loadState = {
     // TODO: load audio
 
     // other setup
-    game.stage.smoothed = false;
+    game.stage.smoothed = true;
   },
 
   // automatically called
