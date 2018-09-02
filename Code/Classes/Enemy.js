@@ -1,6 +1,6 @@
 class Enemy extends GameObject {
   constructor(posX, posY) {
-    super(posX, posY, 10);
+    super(posX, posY, 15);
     this.spriteName = 'enemy';
     this.target;
     this.speed = 100;
@@ -16,6 +16,12 @@ class Enemy extends GameObject {
     const dist = gameManager.findDistance(this, this.target);
     game.add.tween(this.sprite).to(
       { x: this.target.pos.x, y: this.target.pos.y },
+      (dist / this.speed) * 1000,
+      Phaser.Easing.Linear.None,
+      true
+    );
+    game.add.tween(this.sprite).from(
+      { alpha: 0.5, width: this.sprite.width / 2, height: this.sprite.height / 2 },
       (dist / this.speed) * 1000,
       Phaser.Easing.Linear.None,
       true

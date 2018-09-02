@@ -58,7 +58,17 @@ class GameObject {
 
   destroy() {
     gameManager.deregister(this);
-    this.sprite.destroy();
+
+    game.add.tween(this.sprite).to(
+      { alpha: 0 },
+      500,
+      Phaser.Easing.Exponential.Out,
+      true
+    );
+    setTimeout(function() {
+      this.sprite.destroy();
+    }.bind(this), 500);
+
     if (this.healthText) {
       this.healthText.destroy();
     }

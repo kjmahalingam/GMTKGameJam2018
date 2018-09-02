@@ -1,6 +1,6 @@
 class AttackTower extends GameObject {
   constructor(posX, posY) {
-    super(posX, posY, 20);
+    super(posX, posY, 25);
     this.spriteName = 'attackTower';
     this.health = 2;
     this.cost = 5;
@@ -11,14 +11,14 @@ class AttackTower extends GameObject {
   attack() {
     const enemy = gameManager.findClosestEnemy(this);
     if (enemy) {
-
       this.graphics = game.add.graphics(0, 0);
       this.graphics.moveTo(this.pos.x, this.pos.y);
       this.graphics.lineStyle(2, 0x00EEFF, 1);
       this.graphics.lineTo(enemy.pos.x, enemy.pos.y);
+
       game.add.tween(this.graphics).to(
         { alpha: 0 },
-        1000,
+        500,
         Phaser.Easing.Exponential.Out,
         true
       );

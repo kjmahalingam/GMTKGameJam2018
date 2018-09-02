@@ -1,6 +1,6 @@
 class EnemyBase extends GameObject {
   constructor(posX, posY) {
-    super(posX, posY, 100);
+    super(posX, posY, 120);
     this.spriteName = 'enemyBase';
     this.health = 30;
     this.style.font = "50px Arial";
