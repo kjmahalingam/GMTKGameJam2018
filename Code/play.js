@@ -13,10 +13,20 @@ const playState = {
   // automatically called
   create: () => {
     gameManager.create();
-    let enemyBase = new EnemyBase(game.world.width / 2, game.world.height / 2);
+    let enemyBase = new EnemyBase(game.world.width * 0.25, game.world.height / 2);
+    let enemyBase2 = new EnemyBase(game.world.width * 0.75, game.world.height / 2);
     enemyBase.create();
+    enemyBase2.create();
     let incomeTower = new IncomeTower(game.world.width / 2, game.world.height / 4);
     incomeTower.create(game.world.width / 2, game.world.height / 4);
+    breakSound = game.add.audio("break");
+    breakSound.volume = 0.5;
+    explodeSound = game.add.audio("explode");
+    explodeSound.volume = 0.5;
+    laserSound = game.add.audio("laser");
+    laserSound.volume = 0.1;
+    shootSound = game.add.audio("shoot");
+    shootSound.volume = 0.15;
   },
 
   // called every frame

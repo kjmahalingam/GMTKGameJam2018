@@ -10,9 +10,6 @@ const menuState = {
 
   // automatically called
   create: () => {
-    // initialize background
-    game.stage.backgroundColor = "#AAA";
-
     // add menu buttons
     let button = game.add.button(game.world.width / 2, game.world.height / 2, 'button', startGame);
     button.width *= 2;

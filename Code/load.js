@@ -7,7 +7,10 @@ const loadState = {
     game.load.image('enemy', 'Assets/Sprites/enemy.png');
     game.load.image('button', 'Assets/Sprites/button.png');
 
-    // TODO: load audio
+    game.load.audio('break', 'Assets/Audio/Break.wav');
+    game.load.audio('explode', 'Assets/Audio/Explode.wav');
+    game.load.audio('laser', 'Assets/Audio/Laser.wav');
+    game.load.audio('shoot', 'Assets/Audio/Shoot.wav');
 
     // other setup
     game.stage.smoothed = true;

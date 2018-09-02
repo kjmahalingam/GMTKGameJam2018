@@ -2,7 +2,7 @@ class AttackTower extends GameObject {
   constructor(posX, posY) {
     super(posX, posY, 25);
     this.spriteName = 'attackTower';
-    this.health = 2;
+    this.health = 3;
     this.cost = 5;
     this.graphics;
     this.line;
@@ -11,6 +11,8 @@ class AttackTower extends GameObject {
   attack() {
     const enemy = gameManager.findClosestEnemy(this);
     if (enemy) {
+      laserSound.play();
+
       this.graphics = game.add.graphics(0, 0);
       this.graphics.moveTo(this.pos.x, this.pos.y);
       this.graphics.lineStyle(2, 0x00EEFF, 1);
@@ -34,6 +36,14 @@ class AttackTower extends GameObject {
         this.graphics.destroy();
       }
       this.attack();
+    }
+  }
+
+  destroy(manual) {
+    super.destroy();
+
+    if (!manual) {
+      breakSound.play();
     }
   }
 }

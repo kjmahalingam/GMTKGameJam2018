@@ -17,7 +17,7 @@ class GameManager {
       enemy: []
     };
     this.frameCount = 1;
-    this.resources = 25;
+    this.resources = 15;
     this.resourcesToAdd = 0;
     this.resourceText;
   }
@@ -25,7 +25,7 @@ class GameManager {
   destroy() {
     for (const list of Object.entries(this.gameObjects)) {
       for (const gameObject of list[1]) {
-        gameObject.destroy();
+        gameObject.destroy(true);
       }
     }
 
