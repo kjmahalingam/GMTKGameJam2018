@@ -22,8 +22,8 @@ class GameObject {
     return this.radius;
   }
 
-  create() {
-    if (gameManager.hasCollision(this)) {
+  create(ignoreCollision) {
+    if (!ignoreCollision && gameManager.hasCollision(this)) {
       return false;
     }
 

@@ -17,7 +17,7 @@ class GameManager {
       enemy: []
     };
     this.frameCount = 1;
-    this.resources = 25;
+    this.resources = 10;
     this.resourcesToAdd = 0;
     this.resourceText;
   }
@@ -64,20 +64,9 @@ class GameManager {
     return dist;
   }
 
-  findClosestTower(obj) {
+  findRandomTower(obj) {
     const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
-    let closestTower;
-    let dist;
-
-    for (let gameObject of list) {
-      let currentDist = this.findDistance(obj, gameObject);
-      if ((closestTower == null) || (currentDist < dist)) {
-        closestTower = gameObject;
-        dist = currentDist;
-      }
-    }
-
-    return closestTower;
+    return list[Math.floor(Math.random()*list.length)];
   }
 
   findClosestEnemy(obj) {
@@ -86,14 +75,14 @@ class GameManager {
     let dist;
 
     for (let gameObject of list) {
-      let currentDist = this.findDistance(obj, gameObject);
+      let currentDist = this.findDistance(obj, gameObject) - gameObject.radius;
       if ((closestEnemy == null) || (currentDist < dist)) {
         closestEnemy = gameObject;
         dist = currentDist;
       }
     }
 
-    if (!dist || ((dist - closestEnemy.radius) > obj.range)) {
+    if (!dist || (dist > obj.range)) {
       return;
     }
 
@@ -170,35 +159,35 @@ class GameManager {
 
     this.resources -= cost;
     return true;
-  } 
-  
+  }
+
   drawInstructions() {
     let instructionStyle = {
       font: "10px Arial",
       fill: "#ffffff",
       align: "center"
     }
-    
+
     this.attackInstructionBg = game.add.sprite(40, game.world.height - 40, "instruction");
     this.attackInstructionBg.height = this.attackInstructionBg.width = 60;
     this.attackInstructionBg.anchor.setTo(.5, .5);
-    
+
     this.attackInstruction = game.add.sprite(40, game.world.height - 40, "attackTower");
     this.attackInstruction.height = this.attackInstruction.width = 40;
     this.attackInstruction.anchor.setTo(.5, .5);
-    
-    this.attackInstText = game.add.text(40, game.world.height - 40 + 3, 'W, 5R', instructionStyle);
+
+    this.attackInstText = game.add.text(40, game.world.height - 40 + 3, 'Q, 5R', instructionStyle);
     this.attackInstText.anchor.set(0.5, 0.5);
-    
+
     this.attackInstructionBg = game.add.sprite(110, game.world.height - 40, "instruction");
     this.attackInstructionBg.height = this.attackInstructionBg.width = 60;
     this.attackInstructionBg.anchor.setTo(.5, .5);
-    
+
     this.attackInstruction = game.add.sprite(110, game.world.height - 40, "incomeTower");
     this.attackInstruction.height = this.attackInstruction.width = 40;
     this.attackInstruction.anchor.setTo(.5, .5);
-    
-    this.attackInstText = game.add.text(110, game.world.height - 40 + 3, 'Q, 20R', instructionStyle);
+
+    this.attackInstText = game.add.text(110, game.world.height - 40 + 3, 'W, 20R', instructionStyle);
     this.attackInstText.anchor.set(0.5, 0.5);
   }
 

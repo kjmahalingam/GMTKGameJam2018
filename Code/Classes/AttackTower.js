@@ -2,7 +2,7 @@ class AttackTower extends GameObject {
   constructor(posX, posY) {
     super(posX, posY, 25);
     this.spriteName = 'attackTower';
-    this.health = 3;
+    this.health = 4;
     this.cost = 5;
     this.range = 100;
     this.lineGraphics;
@@ -40,10 +40,13 @@ class AttackTower extends GameObject {
   update(frameCount) {
     super.update();
 
-    if ((frameCount % 60) === 0) {
+    if ((frameCount % 180) === 0) {
+      this.damage(1);
+    }
+
+    if ((frameCount % 20) === 0) {
       if (this.lineGraphics) {
         this.lineGraphics.destroy(true);
-        console.log(this.lineGraphics);
       }
       this.attack();
     }

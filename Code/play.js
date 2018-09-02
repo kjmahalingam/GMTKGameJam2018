@@ -2,9 +2,7 @@ const playState = {
   // automatically called
   preload: () => {
     gameManager.destroy();
-    incomeTowerKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
-    incomeTowerKey.onDown.add(addIncomeTower, this);
-    attackTowerKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    attackTowerKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     attackTowerKey.onDown.add(addAttackTower, this);
     resetKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     resetKey.onDown.add(reset, this);
@@ -13,12 +11,18 @@ const playState = {
   // automatically called
   create: () => {
     gameManager.create();
-    let enemyBase = new EnemyBase(game.world.width * 0.25, game.world.height / 2);
-    let enemyBase2 = new EnemyBase(game.world.width * 0.75, game.world.height / 2);
+    let enemyBase = new EnemyBase(game.world.width * 0.2, game.world.height * 0.5);
+    let enemyBase2 = new EnemyBase(game.world.width * 0.8, game.world.height * 0.5);
+    let enemyBase3 = new EnemyBase(game.world.width * 0.5, game.world.height * 0.2);
+    let enemyBase4 = new EnemyBase(game.world.width * 0.5, game.world.height * 0.8);
     enemyBase.create();
     enemyBase2.create();
-    let incomeTower = new IncomeTower(game.world.width / 2, game.world.height / 4);
-    incomeTower.create(game.world.width / 2, game.world.height / 4);
+    enemyBase3.create();
+    enemyBase4.create();
+    let incomeTower = new IncomeTower(game.world.width * 0.45, game.world.height * 0.5);
+    let incomeTower2 = new IncomeTower(game.world.width * 0.55, game.world.height * 0.5);
+    incomeTower.create();
+    incomeTower2.create();
     breakSound = game.add.audio("break");
     breakSound.volume = 0.5;
     explodeSound = game.add.audio("explode");
@@ -27,7 +31,7 @@ const playState = {
     laserSound.volume = 0.1;
     shootSound = game.add.audio("shoot");
     shootSound.volume = 0.15;
-    
+
     gameManager.drawInstructions()
   },
 
@@ -35,11 +39,6 @@ const playState = {
   update: () => {
     gameManager.update();
   }
-}
-
-addIncomeTower = () => {
-  let incomeTower = new IncomeTower(game.input.worldX, game.input.worldY);
-  incomeTower.create();
 }
 
 addAttackTower = () => {

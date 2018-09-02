@@ -1,6 +1,6 @@
 class Enemy extends GameObject {
   constructor(posX, posY) {
-    super(posX, posY, 15);
+    super(posX, posY, 10);
     this.spriteName = 'enemy';
     this.target;
     this.speed = 100;
@@ -12,7 +12,7 @@ class Enemy extends GameObject {
       return;
     }
 
-    this.target = gameManager.findClosestTower(this);
+    this.target = gameManager.findRandomTower(this);
     const dist = gameManager.findDistance(this, this.target);
     game.add.tween(this.sprite).to(
       { x: this.target.pos.x, y: this.target.pos.y },
@@ -40,6 +40,10 @@ class Enemy extends GameObject {
     this.pos.x = this.sprite.x;
     this.pos.y = this.sprite.y;
 
+    if (!this.target) {
+      return;
+    }
+    
     if (this.target.destroyed) {
       this.attackTarget();
     }

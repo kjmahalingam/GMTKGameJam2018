@@ -1,15 +1,15 @@
 class EnemyBase extends GameObject {
   constructor(posX, posY) {
-    super(posX, posY, 120);
+    super(posX, posY, 80);
     this.spriteName = 'enemyBase';
-    this.health = 25;
+    this.health = 50;
     this.style.font = "50px Arial";
   }
 
   update(frameCount) {
     super.update();
 
-    if ((frameCount % 60) === 0) {
+    if ((frameCount % Math.ceil(15 * (this.health / 20))) === 0) {
       shootSound.play();
       gameManager.addEnemy(this);
     }
@@ -21,5 +21,8 @@ class EnemyBase extends GameObject {
     if (!manual) {
       explodeSound.play();
     }
+
+    let incomeTower = new IncomeTower(this.pos.x, this.pos.y);
+    incomeTower.create(true);
   }
 }
