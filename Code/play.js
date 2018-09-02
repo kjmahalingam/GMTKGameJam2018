@@ -56,5 +56,5 @@ addDetonateTower = () => {
 }
 
 reset = () => {
-  game.state.start('play');
+  game.state.start('menu');
 }

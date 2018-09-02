@@ -43,7 +43,7 @@ class Enemy extends GameObject {
     if (!this.target) {
       return;
     }
-    
+
     if (this.target.destroyed) {
       this.attackTarget();
     }

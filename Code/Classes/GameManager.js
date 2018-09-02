@@ -51,7 +51,7 @@ class GameManager {
   }
 
   numTowers() {
-    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
+    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower, ...this.gameObjects.detonateTower];
     return list.length;
   }
 
@@ -181,31 +181,33 @@ class GameManager {
 
   drawInstructions() {
     let instructionStyle = {
-      font: "10px Arial",
+      font: "16px Arial",
+      stroke: "#000000",
+      strokeThickness: 3,
       fill: "#ffffff",
       align: "center"
     }
 
-    this.attackInstructionBg = game.add.sprite(40, game.world.height - 40, "instruction");
-    this.attackInstructionBg.height = this.attackInstructionBg.width = 60;
+    this.attackInstructionBg = game.add.sprite(60, game.world.height - 60, "instruction");
+    this.attackInstructionBg.height = this.attackInstructionBg.width = 80;
     this.attackInstructionBg.anchor.setTo(.5, .5);
 
-    this.attackInstruction = game.add.sprite(40, game.world.height - 40, "attackTower");
-    this.attackInstruction.height = this.attackInstruction.width = 40;
+    this.attackInstruction = game.add.sprite(60, game.world.height - 60, "attackTower");
+    this.attackInstruction.height = this.attackInstruction.width = 60;
     this.attackInstruction.anchor.setTo(.5, .5);
 
-    this.attackInstText = game.add.text(40, game.world.height - 40 + 3, 'Q, 5R', instructionStyle);
+    this.attackInstText = game.add.text(60, game.world.height - 60 + 3, 'Q, 5R', instructionStyle);
     this.attackInstText.anchor.set(0.5, 0.5);
 
-    this.attackInstructionBg = game.add.sprite(110, game.world.height - 40, "instruction");
-    this.attackInstructionBg.height = this.attackInstructionBg.width = 60;
+    this.attackInstructionBg = game.add.sprite(150, game.world.height - 60, "instruction");
+    this.attackInstructionBg.height = this.attackInstructionBg.width = 80;
     this.attackInstructionBg.anchor.setTo(.5, .5);
 
-    this.attackInstruction = game.add.sprite(110, game.world.height - 40, "incomeTower");
-    this.attackInstruction.height = this.attackInstruction.width = 40;
+    this.attackInstruction = game.add.sprite(150, game.world.height - 60, "detonateTower");
+    this.attackInstruction.height = this.attackInstruction.width = 60;
     this.attackInstruction.anchor.setTo(.5, .5);
 
-    this.attackInstText = game.add.text(110, game.world.height - 40 + 3, 'W, 20R', instructionStyle);
+    this.attackInstText = game.add.text(150, game.world.height - 60 + 3, 'W, 3R', instructionStyle);
     this.attackInstText.anchor.set(0.5, 0.5);
   }
 

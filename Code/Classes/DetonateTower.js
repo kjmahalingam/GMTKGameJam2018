@@ -5,7 +5,7 @@ class DetonateTower extends GameObject {
     this.cost = 3;
     this.health = 3;
     this.strength = 5;
-    this.range = 50;
+    this.range = 60;
     this.circleGraphics;
   }
 
