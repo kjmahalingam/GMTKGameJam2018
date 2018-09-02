@@ -27,6 +27,8 @@ const playState = {
     laserSound.volume = 0.1;
     shootSound = game.add.audio("shoot");
     shootSound.volume = 0.15;
+    
+    gameManager.drawInstructions()
   },
 
   // called every frame

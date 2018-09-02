@@ -6,6 +6,7 @@ const loadState = {
     game.load.image('enemyBase', 'Assets/Sprites/enemy_base.png');
     game.load.image('enemy', 'Assets/Sprites/enemy.png');
     game.load.image('button', 'Assets/Sprites/button.png');
+    game.load.image('instruction', 'Assets/Sprites/instruction.png');
 
     game.load.audio('break', 'Assets/Audio/Break.wav');
     game.load.audio('explode', 'Assets/Audio/Explode.wav');

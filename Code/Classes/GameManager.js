@@ -170,6 +170,36 @@ class GameManager {
 
     this.resources -= cost;
     return true;
+  } 
+  
+  drawInstructions() {
+    let instructionStyle = {
+      font: "10px Arial",
+      fill: "#ffffff",
+      align: "center"
+    }
+    
+    this.attackInstructionBg = game.add.sprite(40, game.world.height - 40, "instruction");
+    this.attackInstructionBg.height = this.attackInstructionBg.width = 60;
+    this.attackInstructionBg.anchor.setTo(.5, .5);
+    
+    this.attackInstruction = game.add.sprite(40, game.world.height - 40, "attackTower");
+    this.attackInstruction.height = this.attackInstruction.width = 40;
+    this.attackInstruction.anchor.setTo(.5, .5);
+    
+    this.attackInstText = game.add.text(40, game.world.height - 40 + 3, 'W, 5R', instructionStyle);
+    this.attackInstText.anchor.set(0.5, 0.5);
+    
+    this.attackInstructionBg = game.add.sprite(110, game.world.height - 40, "instruction");
+    this.attackInstructionBg.height = this.attackInstructionBg.width = 60;
+    this.attackInstructionBg.anchor.setTo(.5, .5);
+    
+    this.attackInstruction = game.add.sprite(110, game.world.height - 40, "incomeTower");
+    this.attackInstruction.height = this.attackInstruction.width = 40;
+    this.attackInstruction.anchor.setTo(.5, .5);
+    
+    this.attackInstText = game.add.text(110, game.world.height - 40 + 3, 'Q, 20R', instructionStyle);
+    this.attackInstText.anchor.set(0.5, 0.5);
   }
 
   drawHUD() {
