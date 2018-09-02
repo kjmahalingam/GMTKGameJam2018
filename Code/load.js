@@ -21,8 +21,6 @@ const loadState = {
 
   // automatically called
   create: () => {
-    // TODO: play background music
-
     // start menu state
     game.state.start('menu');
   }

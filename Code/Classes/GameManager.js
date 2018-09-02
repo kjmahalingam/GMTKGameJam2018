@@ -91,14 +91,14 @@ class GameManager {
 
     return closestEnemy;
   }
-  
+
   findEnemiesInRange(obj) {
     const list = [...this.gameObjects.enemy, ...this.gameObjects.enemyBase];
     let enemyList = [];
 
     for (let gameObject of list) {
       let dist = this.findDistance(obj, gameObject) - gameObject.radius;
-      
+
       if(dist <= obj.range){
         enemyList.push(gameObject)
       }

@@ -26,17 +26,17 @@ const playState = {
     incomeTower.create();
     incomeTower2.create();
     breakSound = game.add.audio("break");
-    breakSound.volume = 0.5;
+    breakSound.volume = 0.4;
     explodeSound = game.add.audio("explode");
-    explodeSound.volume = 0.5;
+    explodeSound.volume = 0.4;
     laserSound = game.add.audio("laser");
     laserSound.volume = 0.1;
     shootSound = game.add.audio("shoot");
     shootSound.volume = 0.15;
     detonateSound = game.add.audio("detonate");
-    detonateSound.volume = 0.1;
+    detonateSound.volume = 0.2;
 
-    gameManager.drawInstructions()
+    gameManager.drawInstructions();
   },
 
   // called every frame

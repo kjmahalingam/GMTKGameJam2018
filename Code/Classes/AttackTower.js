@@ -6,6 +6,7 @@ class AttackTower extends GameObject {
     this.cost = 5;
     this.range = 100;
     this.lineGraphics;
+    this.circleGraphics;
   }
 
   attack() {
