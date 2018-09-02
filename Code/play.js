@@ -31,6 +31,8 @@ const playState = {
     laserSound.volume = 0.1;
     shootSound = game.add.audio("shoot");
     shootSound.volume = 0.15;
+    detonateSound = game.add.audio("detonate");
+    detonateSound.volume = 0.1;
 
     gameManager.drawInstructions()
   },

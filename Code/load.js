@@ -12,6 +12,7 @@ const loadState = {
     game.load.audio('explode', 'Assets/Audio/Explode.wav');
     game.load.audio('laser', 'Assets/Audio/Laser.wav');
     game.load.audio('shoot', 'Assets/Audio/Shoot.wav');
+    game.load.audio('detonate', 'Assets/Audio/Detonate.wav');
 
     // other setup
     game.stage.smoothed = true;
