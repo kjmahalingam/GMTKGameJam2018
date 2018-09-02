@@ -4,6 +4,8 @@ class GameManager {
 
     this.style = {
       font: "30px Arial",
+      stroke: "#000000",
+      strokeThickness: 5,
       fill: "#ffffff",
       align: "center"
     }
@@ -108,7 +110,7 @@ class GameManager {
   hasCollisionWithTower(obj) {
     const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
 
-    for(gameObject of list) {
+    for(let gameObject of list) {
       if (!Object.is(gameObject, obj)
         && this.isColliding(gameObject, obj)) {
         return gameObject;
@@ -119,7 +121,7 @@ class GameManager {
   hasCollisionWithEnemy(obj) {
     const list = this.gameObjects.enemy;
 
-    for(gameObject of list) {
+    for(let gameObject of list) {
       if (!Object.is(gameObject, obj)
         && this.isColliding(gameObject, obj)) {
         return gameObject;
@@ -130,7 +132,7 @@ class GameManager {
   hasCollisionWithEnemyBase(obj) {
     const list = this.gameObjects.enemyBase;
 
-    for(gameObject of list) {
+    for(let gameObject of list) {
       if (!Object.is(gameObject, obj)
         && this.isColliding(gameObject, obj)) {
         return gameObject;
@@ -195,7 +197,7 @@ class GameManager {
     if (this.resourceText != null) {
       this.resourceText.destroy();
     }
-    this.resourceText = game.add.text(100, 30, `Resources: ${this.resources}`, this.style);
+    this.resourceText = game.add.text(110, 30, `Resources: ${this.resources}`, this.style);
     this.resourceText.anchor.set(0.5, 0.5);
   }
 

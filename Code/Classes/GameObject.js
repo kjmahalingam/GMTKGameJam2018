@@ -9,6 +9,8 @@ class GameObject {
     this.cost = 0;
     this.style = {
       font: "30px Arial",
+      stroke: "#000000",
+      strokeThickness: 5,
       fill: "#ffffff",
       align: "center"
     }
@@ -23,7 +25,7 @@ class GameObject {
   }
 
   create(ignoreCollision) {
-    if (!ignoreCollision && gameManager.hasCollision(this)) {
+    if (!ignoreCollision && (gameManager.hasCollisionWithTower(this) || gameManager.hasCollisionWithEnemyBase(this))) {
       return false;
     }
 
@@ -48,6 +50,9 @@ class GameObject {
   showHealth() {
     if (this.healthText) {
       this.healthText.destroy();
+    }
+    if (this.health <= 1) {
+      this.style.fill = "#ff3333";
     }
     this.healthText = game.add.text(this.pos.x, this.pos.y+3, `${this.health}`, this.style);
     this.healthText.anchor.set(0.5, 0.5);
