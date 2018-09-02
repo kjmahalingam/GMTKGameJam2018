@@ -4,8 +4,8 @@ class AttackTower extends GameObject {
     this.spriteName = 'attackTower';
     this.health = 3;
     this.cost = 5;
-    this.graphics;
-    this.line;
+    this.range = 100;
+    this.lineGraphics;
   }
 
   attack() {
@@ -13,12 +13,12 @@ class AttackTower extends GameObject {
     if (enemy) {
       laserSound.play();
 
-      this.graphics = game.add.graphics(0, 0);
-      this.graphics.moveTo(this.pos.x, this.pos.y);
-      this.graphics.lineStyle(2, 0x00EEFF, 1);
-      this.graphics.lineTo(enemy.pos.x, enemy.pos.y);
+      this.lineGraphics = game.add.graphics(0, 0);
+      this.lineGraphics.moveTo(this.pos.x, this.pos.y);
+      this.lineGraphics.lineStyle(2, 0x00EEFF, 1);
+      this.lineGraphics.lineTo(enemy.pos.x, enemy.pos.y);
 
-      game.add.tween(this.graphics).to(
+      game.add.tween(this.lineGraphics).to(
         { alpha: 0 },
         500,
         Phaser.Easing.Exponential.Out,
@@ -28,12 +28,22 @@ class AttackTower extends GameObject {
     }
   }
 
+  create() {
+    if (super.create()) {
+      this.circleGraphics = game.add.graphics(0, 0);
+      this.circleGraphics.moveTo(this.pos.x, this.pos.y);
+      this.circleGraphics.lineStyle(1, 0x000000, 0.25);
+      this.circleGraphics.drawCircle(this.pos.x, this.pos.y, this.range * 2);
+    }
+  }
+
   update(frameCount) {
     super.update();
 
     if ((frameCount % 60) === 0) {
-      if (this.graphics) {
-        this.graphics.destroy();
+      if (this.lineGraphics) {
+        this.lineGraphics.destroy(true);
+        console.log(this.lineGraphics);
       }
       this.attack();
     }
@@ -41,6 +51,8 @@ class AttackTower extends GameObject {
 
   destroy(manual) {
     super.destroy();
+
+    this.circleGraphics.destroy();
 
     if (!manual) {
       breakSound.play();

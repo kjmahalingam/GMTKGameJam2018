@@ -1,7 +1,7 @@
 // initialize game
 game = new Phaser.Game(
   1280,
-  800,
+  720,
   Phaser.CANVAS,
   ''
 );

@@ -17,7 +17,7 @@ class GameManager {
       enemy: []
     };
     this.frameCount = 1;
-    this.resources = 15;
+    this.resources = 25;
     this.resourcesToAdd = 0;
     this.resourceText;
   }
@@ -93,7 +93,7 @@ class GameManager {
       }
     }
 
-    if (!dist || (dist > 250)) {
+    if (!dist || ((dist - closestEnemy.radius) > obj.range)) {
       return;
     }
 

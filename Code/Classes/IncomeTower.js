@@ -2,7 +2,7 @@ class IncomeTower extends GameObject {
   constructor(posX, posY) {
     super(posX, posY, 25);
     this.spriteName = 'incomeTower';
-    this.cost = 10;
+    this.cost = 20
     this.health = 5;
   }
 

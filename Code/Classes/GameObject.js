@@ -24,17 +24,18 @@ class GameObject {
 
   create() {
     if (gameManager.hasCollision(this)) {
-      return;
+      return false;
     }
 
     if (!gameManager.payResources(this.cost)) {
-      return;
+      return false;
     }
 
     this.sprite = game.add.sprite(this.pos.x, this.pos.y, this.spriteName);
     this.sprite.anchor.setTo(0.5, 0.5);
     this.sprite.width = this.sprite.height = this.radius * 2;
     gameManager.register(this);
+    return true;
   }
 
   damage(incomingDamage) {
