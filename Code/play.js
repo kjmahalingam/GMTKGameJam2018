@@ -4,6 +4,8 @@ const playState = {
     gameManager.destroy();
     attackTowerKey = game.input.keyboard.addKey(Phaser.Keyboard.Q);
     attackTowerKey.onDown.add(addAttackTower, this);
+    detonateTowerKey = game.input.keyboard.addKey(Phaser.Keyboard.W);
+    detonateTowerKey.onDown.add(addDetonateTower, this);
     resetKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     resetKey.onDown.add(reset, this);
   },
@@ -46,6 +48,11 @@ const playState = {
 addAttackTower = () => {
   let attackTower = new AttackTower(game.input.worldX, game.input.worldY);
   attackTower.create();
+}
+
+addDetonateTower = () => {
+  let detonateTower = new DetonateTower(game.input.worldX, game.input.worldY);
+  detonateTower.create();
 }
 
 reset = () => {

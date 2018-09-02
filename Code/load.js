@@ -3,6 +3,7 @@ const loadState = {
   preload: () => {
     game.load.image('attackTower', 'Assets/Sprites/attack_tower.png');
     game.load.image('incomeTower', 'Assets/Sprites/income_tower.png');
+    game.load.image('detonateTower', 'Assets/Sprites/detonate_tower.png');
     game.load.image('enemyBase', 'Assets/Sprites/enemy_base.png');
     game.load.image('enemy', 'Assets/Sprites/enemy.png');
     game.load.image('button', 'Assets/Sprites/button.png');

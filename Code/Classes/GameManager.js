@@ -15,6 +15,7 @@ class GameManager {
     this.gameObjects = {
       incomeTower: [],
       attackTower: [],
+      detonateTower: [],
       enemyBase: [],
       enemy: []
     };
@@ -67,7 +68,7 @@ class GameManager {
   }
 
   findRandomTower(obj) {
-    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
+    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower, ...this.gameObjects.detonateTower];
     return list[Math.floor(Math.random()*list.length)];
   }
 
@@ -90,6 +91,21 @@ class GameManager {
 
     return closestEnemy;
   }
+  
+  findEnemiesInRange(obj) {
+    const list = [...this.gameObjects.enemy, ...this.gameObjects.enemyBase];
+    let enemyList = [];
+
+    for (let gameObject of list) {
+      let dist = this.findDistance(obj, gameObject) - gameObject.radius;
+      
+      if(dist <= obj.range){
+        enemyList.push(gameObject)
+      }
+    }
+
+    return enemyList;
+  }
 
   isColliding(object1, object2) {
     const dist = this.findDistance(object1, object2);
@@ -108,7 +124,7 @@ class GameManager {
   }
 
   hasCollisionWithTower(obj) {
-    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower];
+    const list = [...this.gameObjects.incomeTower, ...this.gameObjects.attackTower, ...this.gameObjects.detonateTower];
 
     for(let gameObject of list) {
       if (!Object.is(gameObject, obj)
